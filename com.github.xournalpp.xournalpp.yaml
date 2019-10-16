@@ -3,8 +3,6 @@ runtime: org.freedesktop.Platform
 runtime-version: '18.08'
 sdk: org.freedesktop.Sdk
 command: xournalpp
-rename-icon: xournalpp
-rename-desktop-file: xournalpp.desktop
 finish-args:
   # X11 + XShm access
   - "--share=ipc"
@@ -87,17 +85,10 @@ modules:
         url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.27.tar.gz
         sha256: a391952f27f4a92ceb2b4c06493ac107896ed6c76be9a613a4731f076d30fac0
 
-  - name: xournallpp
+  - name: xournalpp
     buildsystem: cmake-ninja
-    post-install:
-      - sed -i s,xournalpp.desktop,com.github.xournalpp.xournalpp.desktop,g  xournalpp.appdata.xml
-      - install -Dma+r xournalpp.appdata.xml /app/share/metainfo/com.github.xournalpp.xournalpp.appdata.xml
-      - install -Dma+r /app/share/mime/packages/xournalpp.xml  /app/share/mime/packages/com.github.xournalpp.xournalpp.xml
-
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 14e9012b94e005112387dbb7d2ed59274d542885
-        tag: 1.0.10
-      - type: file
-        path: xournalpp.appdata.xml
+        commit: a911a3911df7c588c23997a29ad6a2e8d48b4aea
+        tag: 1.0.15

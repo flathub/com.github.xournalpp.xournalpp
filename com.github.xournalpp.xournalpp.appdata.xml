@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Tobias Mueller <tobiasmue@gnome.org>  -->
 <component type="desktop">
-  <id>xournalpp.desktop</id>
+  <id>com.github.xournalpp.xournalpp</id>
   <translation type="gettext">xournalpp</translation>
   <name>Xournal++</name>
   <summary>Take handwritten notes</summary>
@@ -16,7 +17,7 @@
     flexibility, functionality and speed. Stroke recognizer and other parts are
     based on Xournal Code, which you can find at sourceforge. It supports Linux
     (e.g. Ubuntu, Debian, Arch, Suse), macOS and Windows 10. Supports pen input
-    from devices such as Wacom Tablets. 
+    from devices such as Wacom Tablets.
    </p>
    <p>Xournal++ features:</p>
    <ul>
@@ -62,13 +63,24 @@
       <image>https://i.imgur.com/3uxu40d.png</image>
     </screenshot>
   </screenshots>
-  <launchable type="desktop-id">@app-id@.desktop</launchable>
+  <launchable type="desktop-id">com.github.xournalpp.xournalpp.desktop</launchable>
+  <provides>
+    <id>xournalpp.desktop</id>
+    <binary>xournalpp</binary>
+  </provides>
+  <mimetypes>
+    <mimetype>application/x-xojpp</mimetype>
+    <mimetype>application/x-xopp</mimetype>
+    <mimetype>application/x-xopt</mimetype>
+  </mimetypes>
   <update_contact>webmaster_AT_huberulrich.de</update_contact>
   <content_rating type="oars-1.0"/>
   <releases>
     <!-- Could be automated more:
 	 `git tag --list | grep "^[0-9]*\.[0-9]*\.[0-9]*$`"
     -->
+    <release date="2019-10-15" version="1.0.15"/>
+    <release date="2019-10-12" version="1.0.14"/>
     <release date="2019-05-26" version="1.0.12"/>
     <release date="2019-04-01" version="1.0.10"/>
     <release date="2019-02-16" version="1.0.8"/>
