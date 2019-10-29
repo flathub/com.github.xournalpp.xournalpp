@@ -9,9 +9,10 @@ finish-args:
   - "--socket=x11"
   # Wayland access
   - "--socket=wayland"
-  # Needs to save files locally
-  # Why are portals not used? Does the app re-implement the open dialogue?
+  # File access (unfortunately, autosaving will not work properly outside of $XDG_DOCUMENTS_DIR)
   - "--filesystem=xdg-documents"
+  - "--system-talk-name=org.freedesktop.portal.FileChooser"
+  # Sound
   - "--socket=pulseaudio"
   # Allow dconf
   - "--filesystem=xdg-run/dconf"
