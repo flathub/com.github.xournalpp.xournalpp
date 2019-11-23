@@ -2,6 +2,8 @@ app-id: com.github.xournalpp.xournalpp
 runtime: org.freedesktop.Platform
 runtime-version: '19.08'
 sdk: org.freedesktop.Sdk
+sdk-extensions:
+    - org.freedesktop.Sdk.Extension.texlive
 command: xournalpp
 finish-args:
   # X11 + XShm access
@@ -32,6 +34,11 @@ cleanup:
   - "*.la"
   - "*.a"
 modules:
+  - name: texlive
+    buildsystem: simple
+    build-commands:
+        - /usr/lib/sdk/texlive/install.sh
+
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
