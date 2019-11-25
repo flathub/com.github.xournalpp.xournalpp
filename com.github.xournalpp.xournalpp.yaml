@@ -22,7 +22,9 @@ finish-args:
   - "--talk-name=ca.desrt.dconf"
   - "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
   - "--persist=.xournalpp"
-
+  # Access to the TeX binaries, taken from https://github.com/flathub/org.texstudio.TeXstudio/blob/d4e27005d20889aa738da129ea6b6b0e5c0a0528/org.texstudio.TeXstudio.yaml#L22
+  - --env=PATH=/app/jre/bin:/usr/bin:/app/bin:/app/bin/x86_64-linux
+  
 cleanup:
   - "/include"
   - "/lib/pkgconfig"
