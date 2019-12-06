@@ -47,6 +47,7 @@ cleanup:
   - "*.a"
 modules:
   - name: texlive
+    disabled: true
     buildsystem: simple
     build-commands:
         - /usr/lib/sdk/texlive/install.sh
