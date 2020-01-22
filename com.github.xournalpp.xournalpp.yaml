@@ -21,7 +21,6 @@ finish-args:
   - "--socket=wayland"
   # File access (unfortunately, autosaving will not work properly outside of $XDG_DOCUMENTS_DIR)
   - "--filesystem=xdg-documents"
-  - "--system-talk-name=org.freedesktop.portal.FileChooser"
   # Sound
   - "--socket=pulseaudio"
   # Allow dconf
