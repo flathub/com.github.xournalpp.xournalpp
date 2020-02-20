@@ -104,3 +104,6 @@ modules:
         url: https://github.com/xournalpp/xournalpp
         commit: 12febf7e577aeb8756464c23713ef9a43729eede
         tag: 1.0.17
+
+      - type: patch
+        path: 0001-Fix-translation-target.patch
