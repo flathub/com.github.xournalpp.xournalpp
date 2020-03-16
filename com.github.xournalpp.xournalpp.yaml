@@ -99,6 +99,7 @@ modules:
 
   - name: xournalpp
     buildsystem: cmake-ninja
+    builddir: true
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
