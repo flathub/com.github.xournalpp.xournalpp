@@ -20,7 +20,8 @@ finish-args:
   # Wayland access
   - "--socket=wayland"
   # File access (unfortunately, autosaving will not work properly outside of $XDG_DOCUMENTS_DIR)
-  - "--filesystem=xdg-documents"
+  # Also: https://github.com/flathub/com.github.xournalpp.xournalpp/issues/13
+  - "--filesystem=host"
   # Sound
   - "--socket=pulseaudio"
   # Allow dconf
