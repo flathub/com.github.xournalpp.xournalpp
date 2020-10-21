@@ -104,5 +104,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 535d261d364f5925dec1ae3966a067883e53281e
-        tag: 1.0.18
+        commit: d376e7a6aebc0f92a81af7d2da2090d050434262
+        tag: 1.0.19
