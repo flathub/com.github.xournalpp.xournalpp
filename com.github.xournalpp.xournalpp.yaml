@@ -1,6 +1,6 @@
 app-id: com.github.xournalpp.xournalpp
 runtime: org.freedesktop.Platform
-runtime-version: '19.08'
+runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
 
 add-extensions:
@@ -9,7 +9,7 @@ add-extensions:
     subdirectories: true
     no-autodownload: true
     autodelete: true
-    version: "19.08"
+    version: "20.08"
 
 
 command: xournalpp
