@@ -98,6 +98,11 @@ modules:
         url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.27.tar.gz
         sha256: a391952f27f4a92ceb2b4c06493ac107896ed6c76be9a613a4731f076d30fac0
 
+  - name: texlive extension
+    buildsystem: simple
+    build-commands:
+        - mkdir /app/extensions
+
   - name: xournalpp
     buildsystem: cmake-ninja
     builddir: true
