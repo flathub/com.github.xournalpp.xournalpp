@@ -54,8 +54,8 @@ modules:
       - "/bin"
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-0.69.0.tar.xz
-        sha256: 637ff943f805f304ff1da77ba2e7f1cbd675f474941fd8ae1e0fc01a5b45a3f9
+        url: https://poppler.freedesktop.org/poppler-0.86.1.tar.xz
+        sha256: af630a277c8e194c31339c5446241834aed6ed3d4b4dc7080311e51c66257f6c
   - name: libzip
     buildsystem: cmake-ninja
     config-opts:
