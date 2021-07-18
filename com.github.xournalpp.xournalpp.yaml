@@ -1,7 +1,8 @@
 app-id: com.github.xournalpp.xournalpp
-runtime: org.freedesktop.Platform
-runtime-version: '20.08'
-sdk: org.freedesktop.Sdk
+# The (bigger) Gnome Platform is just a workaround for an issue with custom cursors, see https://github.com/xournalpp/xournalpp/issues/2375#issuecomment-781482931
+runtime: org.gnome.Platform
+runtime-version: '40'
+sdk: org.gnome.Sdk
 
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
