@@ -1,7 +1,8 @@
 app-id: com.github.xournalpp.xournalpp
 # The (bigger) Gnome Platform is just a workaround for an issue with custom cursors, see https://github.com/xournalpp/xournalpp/issues/2375#issuecomment-781482931
 runtime: org.gnome.Platform
-runtime-version: '40'
+# Lua-lgi does not work yet with Gtk 4 / Gnome 40, see https://github.com/pavouk/lgi/issues/226
+runtime-version: '3.38'
 sdk: org.gnome.Sdk
 
 add-extensions:
@@ -30,10 +31,12 @@ finish-args:
   - "--filesystem=~/.config/dconf:ro"
   - "--talk-name=ca.desrt.dconf"
   - "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
-  - "--persist=.xournalpp"
   # Access to the TeX binaries, taken from https://github.com/flathub/org.texstudio.TeXstudio/blob/d4e27005d20889aa738da129ea6b6b0e5c0a0528/org.texstudio.TeXstudio.yaml#L22
   - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin/
-  
+  # Access to the Lua lgi module
+  - --env=LUA_PATH=/app/share/lua/5.3/?.lua;/app/share/lua/5.3/?/init.lua;/app/lib/lua/5.3/?.lua;./?.lua;./?/init.lua
+  - --env=LUA_CPATH=/app/lib/lua/5.3/?.so;/app/lib/x86_64-linux-gnu/5.3/?.so;/app/lib/lua/5.3/loadall.so;./?.so
+    
 cleanup:
   - "/include"
   - "/lib/pkgconfig"
@@ -45,6 +48,28 @@ cleanup:
   - "*.la"
   - "*.a"
 modules:
+  - name: lua
+    buildsystem: simple
+    build-commands:
+      - make linux
+      - make install INSTALL_TOP="$FLATPAK_DEST"
+    sources:
+      - type: archive
+        url: http://www.lua.org/ftp/lua-5.3.6.tar.gz
+        sha1: f27d20d6c81292149bc4308525a9d6733c224fa5
+        
+  - name: lua-lgi
+    buildsystem: simple
+    no-autogen: true
+    no-make-install: true
+    build-commands:
+      - make PREFIX="" LUA_VERSION="5.3"
+      - make install PREFIX="" LUA_VERSION="5.3" DESTDIR=$FLATPAK_DEST  
+    sources: 
+      - type: git
+        url: https://github.com/pavouk/lgi.git
+        commit: 0fdcf8c677094d0c109dfb199031fdbc0c9c47ea
+        
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
@@ -98,7 +123,7 @@ modules:
       - type: archive
         url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.27.tar.gz
         sha256: a391952f27f4a92ceb2b4c06493ac107896ed6c76be9a613a4731f076d30fac0
-
+        
   - name: texlive_extension
     buildsystem: simple
     build-commands:
