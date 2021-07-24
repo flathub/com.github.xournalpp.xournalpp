@@ -31,11 +31,9 @@ finish-args:
   - "--filesystem=~/.config/dconf:ro"
   - "--talk-name=ca.desrt.dconf"
   - "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+  - "--persist=.xournalpp"
   # Access to the TeX binaries, taken from https://github.com/flathub/org.texstudio.TeXstudio/blob/d4e27005d20889aa738da129ea6b6b0e5c0a0528/org.texstudio.TeXstudio.yaml#L22
   - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin/
-  # Access to the Lua lgi module
-  - --env=LUA_PATH=/app/share/lua/5.3/?.lua;/app/share/lua/5.3/?/init.lua;/app/lib/lua/5.3/?.lua;./?.lua;./?/init.lua
-  - --env=LUA_CPATH=/app/lib/lua/5.3/?.so;/app/lib/x86_64-linux-gnu/5.3/?.so;/app/lib/lua/5.3/loadall.so;./?.so
     
 cleanup:
   - "/include"
@@ -48,16 +46,7 @@ cleanup:
   - "*.la"
   - "*.a"
 modules:
-  - name: lua
-    buildsystem: simple
-    build-commands:
-      - make linux
-      - make install INSTALL_TOP="$FLATPAK_DEST"
-    sources:
-      - type: archive
-        url: http://www.lua.org/ftp/lua-5.3.6.tar.gz
-        sha1: f27d20d6c81292149bc4308525a9d6733c224fa5
-        
+  - shared-modules/lua5.3/lua-5.3.5.json
   - name: lua-lgi
     buildsystem: simple
     no-autogen: true
