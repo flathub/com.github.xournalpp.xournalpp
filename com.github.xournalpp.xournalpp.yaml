@@ -1,8 +1,7 @@
 app-id: com.github.xournalpp.xournalpp
 # The (bigger) Gnome Platform is just a workaround for an issue with custom cursors, see https://github.com/xournalpp/xournalpp/issues/2375#issuecomment-781482931
 runtime: org.gnome.Platform
-# Lua-lgi does not work yet with Gtk 4 / Gnome 40, see https://github.com/pavouk/lgi/issues/226
-runtime-version: '3.38'
+runtime-version: '41'
 sdk: org.gnome.Sdk
 
 add-extensions:
@@ -47,30 +46,33 @@ cleanup:
   - "*.a"
 modules:
   - shared-modules/lua5.3/lua-5.3.5.json
+  
   - name: lua-lgi
     buildsystem: simple
     no-autogen: true
     no-make-install: true
     build-commands:
       - make PREFIX="" LUA_VERSION="5.3"
-      - make install PREFIX="" LUA_VERSION="5.3" DESTDIR=$FLATPAK_DEST  
+      - make install PREFIX="" LUA_VERSION="5.3" DESTDIR=$FLATPAK_DEST
     sources: 
       - type: git
         url: https://github.com/pavouk/lgi.git
-        commit: 0fdcf8c677094d0c109dfb199031fdbc0c9c47ea
-        
+        commit: 4071f902b635d3a7078c65162fce347367b1371d
+
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
       - "-DCMAKE_INSTALL_LIBDIR=/app/lib"
       - "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
+      - "-DENABLE_BOOST=OFF"
       - "-DENABLE_LIBOPENJPEG=none"
     cleanup:
       - "/bin"
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-0.86.1.tar.xz
-        sha256: af630a277c8e194c31339c5446241834aed6ed3d4b4dc7080311e51c66257f6c
+        url: https://poppler.freedesktop.org/poppler-21.09.0.tar.xz
+        sha256: 5a47fef738c2b99471f9b459a8bf8b40aefb7eed92caa4861c3798b2e126d05b
+
   - name: libzip
     buildsystem: cmake-ninja
     config-opts:
@@ -80,8 +82,8 @@ modules:
       - "/bin"
     sources:
       - type: archive
-        url: https://libzip.org/download/libzip-1.5.2.tar.xz
-        sha256: b3de4d4bd49a01e0cab3507fc163f88e1651695b6b9cb25ad174dbe319d4a3b4
+        url: https://libzip.org/download/libzip-1.8.0.tar.xz
+        sha256: f0763bda24ba947e80430be787c4b068d8b6aa6027a26a19923f0acfa3dac97e
 
   - name: libportaudiocpp
     buildsystem: autotools
@@ -91,9 +93,9 @@ modules:
         # seem parallel build is broken. At least it breaks for me, locally
         - -j1
     sources:
-      - type: git
-        url: https://git.assembla.com/portaudio.git
-        commit: 396fe4b6699ae929d3a685b3ef8a7e97396139a4
+      - type: archive
+        url: http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz
+        sha256: 47efbf42c77c19a05d22e627d42873e991ec0c1357219c0d74ce6a2948cb2def
     cleanup:
       - "/include"
       - "/lib/*.a"
@@ -110,8 +112,8 @@ modules:
     buildsystem: autotools
     sources:
       - type: archive
-        url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.27.tar.gz
-        sha256: a391952f27f4a92ceb2b4c06493ac107896ed6c76be9a613a4731f076d30fac0
+        url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
+        sha256: 1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9
         
   - name: texlive_extension
     buildsystem: simple
