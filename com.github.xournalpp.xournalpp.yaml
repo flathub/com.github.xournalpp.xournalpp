@@ -132,3 +132,5 @@ modules:
         path: 0001-Update-appdata-screenshots.patch
       - type: patch
         path: 0002-Avoid-deprecated-mimetypes-tag.patch
+      - type: patch
+        path: 0003-ensure-lgi-loads-Gtk-3.patch
