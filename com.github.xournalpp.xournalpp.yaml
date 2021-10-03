@@ -70,8 +70,12 @@ modules:
       - "/bin"
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-21.09.0.tar.xz
-        sha256: 5a47fef738c2b99471f9b459a8bf8b40aefb7eed92caa4861c3798b2e126d05b
+        url: https://poppler.freedesktop.org/poppler-21.10.0.tar.xz
+        sha256: 964b5b16290fbec3fae57c2a5bcdea49bb0736bd750c3a3711c47995c9efc394
+        x-checker-data:
+          type: anitya
+          project-id: 3686
+          url-template: https://poppler.freedesktop.org/poppler-$version.tar.xz
 
   - name: libzip
     buildsystem: cmake-ninja
@@ -84,6 +88,10 @@ modules:
       - type: archive
         url: https://libzip.org/download/libzip-1.8.0.tar.xz
         sha256: f0763bda24ba947e80430be787c4b068d8b6aa6027a26a19923f0acfa3dac97e
+        x-checker-data:
+          type: anitya
+          project-id: 10649
+          url-template: https://libzip.org/download/libzip-$version.tar.xz
 
   - name: libportaudiocpp
     buildsystem: autotools
@@ -94,8 +102,8 @@ modules:
         - -j1
     sources:
       - type: archive
-        url: http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz
-        sha256: 47efbf42c77c19a05d22e627d42873e991ec0c1357219c0d74ce6a2948cb2def
+        url: https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.tar.gz
+        sha256: 5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0
     cleanup:
       - "/include"
       - "/lib/*.a"
@@ -114,7 +122,13 @@ modules:
       - type: archive
         url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
         sha256: 1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9
-        
+# Latest versions of fork give compile errors for Xournalpp
+# https://github.com/xournalpp/xournalpp/issues/3432
+#        x-checker-data:
+#          type: anitya
+#          project-id: 13277
+#          url-template: https://github.com/libsndfile/libsndfile/archive/refs/tags/$version.tar.gz
+
   - name: texlive_extension
     buildsystem: simple
     build-commands:
@@ -128,6 +142,9 @@ modules:
         url: https://github.com/xournalpp/xournalpp
         commit: 9d1277dee22bb095c2db047bb04f89cc837aee3c
         tag: 1.1.0
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
       - type: patch
         path: 0001-Update-appdata-screenshots.patch
       - type: patch
