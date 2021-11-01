@@ -13,43 +13,43 @@ add-extensions:
     subdirectories: true
     no-autodownload: true
     autodelete: true
-    version: "20.08"
+    version: '20.08'
 
 
 command: xournalpp
 finish-args:
   # X11 + XShm access
-  - "--share=ipc"
-  - "--socket=x11"
+  - --share=ipc
+  - --socket=x11
   # Wayland access
-  - "--socket=wayland"
+  - --socket=wayland
   # File access (unfortunately, autosaving will not work properly outside of $XDG_DOCUMENTS_DIR)
   # Also: https://github.com/flathub/com.github.xournalpp.xournalpp/issues/13
-  - "--filesystem=host"
+  - --filesystem=host
   # Sound
-  - "--socket=pulseaudio"
+  - --socket=pulseaudio
   # Allow dconf
-  - "--filesystem=xdg-run/dconf"
-  - "--filesystem=~/.config/dconf:ro"
-  - "--talk-name=ca.desrt.dconf"
-  - "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
-  - "--persist=.xournalpp"
+  - --filesystem=xdg-run/dconf
+  - --filesystem=~/.config/dconf:ro
+  - --talk-name=ca.desrt.dconf
+  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
+  - --persist=.xournalpp
   # Access to the TeX binaries, taken from https://github.com/flathub/org.texstudio.TeXstudio/blob/d4e27005d20889aa738da129ea6b6b0e5c0a0528/org.texstudio.TeXstudio.yaml#L22
   - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin/
-    
+
 cleanup:
-  - "/include"
-  - "/lib/pkgconfig"
-  - "/man"
-  - "/share/doc"
-  - "/share/gtk-doc"
-  - "/share/man"
-  - "/share/pkgconfig"
-  - "*.la"
-  - "*.a"
+  - /include
+  - /lib/pkgconfig
+  - /man
+  - /share/doc
+  - /share/gtk-doc
+  - /share/man
+  - /share/pkgconfig
+  - '*.la'
+  - '*.a'
 modules:
   - shared-modules/lua5.3/lua-5.3.5.json
-  
+
   - name: lua-lgi
     buildsystem: simple
     no-autogen: true
@@ -57,7 +57,7 @@ modules:
     build-commands:
       - make PREFIX="" LUA_VERSION="5.3"
       - make install PREFIX="" LUA_VERSION="5.3" DESTDIR=$FLATPAK_DEST
-    sources: 
+    sources:
       - type: git
         url: https://github.com/pavouk/lgi.git
         commit: 4071f902b635d3a7078c65162fce347367b1371d
@@ -65,16 +65,16 @@ modules:
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
-      - "-DCMAKE_INSTALL_LIBDIR=/app/lib"
-      - "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
-      - "-DENABLE_BOOST=OFF"
-      - "-DENABLE_LIBOPENJPEG=none"
+      - -DCMAKE_INSTALL_LIBDIR=/app/lib
+      - -DCMAKE_INSTALL_INCLUDEDIR=/app/include
+      - -DENABLE_BOOST=OFF
+      - -DENABLE_LIBOPENJPEG=none
     cleanup:
-      - "/bin"
+      - /bin
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-21.10.0.tar.xz
-        sha256: 964b5b16290fbec3fae57c2a5bcdea49bb0736bd750c3a3711c47995c9efc394
+        url: https://poppler.freedesktop.org/poppler-21.11.0.tar.xz
+        sha256: 31b76b5cac0a48612fdd154c02d9eca01fd38fb8eaa77c1196840ecdeb53a584
         x-checker-data:
           type: anitya
           project-id: 3686
@@ -83,10 +83,10 @@ modules:
   - name: libzip
     buildsystem: cmake-ninja
     config-opts:
-      - "-DCMAKE_INSTALL_LIBDIR=/app/lib"
-      - "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
+      - -DCMAKE_INSTALL_LIBDIR=/app/lib
+      - -DCMAKE_INSTALL_INCLUDEDIR=/app/include
     cleanup:
-      - "/bin"
+      - /bin
     sources:
       - type: archive
         url: https://libzip.org/download/libzip-1.8.0.tar.xz
@@ -99,25 +99,25 @@ modules:
   - name: libportaudiocpp
     buildsystem: autotools
     config-opts:
-      - "--enable-cxx" # compile with c++ headers!!!
+      - --enable-cxx   # compile with c++ headers!!!
     make-args:
         # seem parallel build is broken. At least it breaks for me, locally
-        - -j1
+      - -j1
     sources:
       - type: archive
         url: https://github.com/PortAudio/portaudio/archive/refs/tags/v19.7.0.tar.gz
         sha256: 5af29ba58bbdbb7bbcefaaecc77ec8fc413f0db6f4c4e286c40c3e1b83174fa0
     cleanup:
-      - "/include"
-      - "/lib/*.a"
-      - "/lib/*.la"
-      - "/lib/pkgconfig"
-      - "/man"
-      - "/share/aclocal"
-      - "/share/doc"
-      - "/share/gtk-doc"
-      - "/share/man"
-      - "/share/pkgconfig"
+      - /include
+      - /lib/*.a
+      - /lib/*.la
+      - /lib/pkgconfig
+      - /man
+      - /share/aclocal
+      - /share/doc
+      - /share/gtk-doc
+      - /share/man
+      - /share/pkgconfig
 
   - name: libsndfile
     buildsystem: autotools
@@ -135,7 +135,7 @@ modules:
   - name: texlive_extension
     buildsystem: simple
     build-commands:
-        - mkdir /app/extensions
+      - mkdir /app/extensions
 
   - name: xournalpp
     buildsystem: cmake-ninja
