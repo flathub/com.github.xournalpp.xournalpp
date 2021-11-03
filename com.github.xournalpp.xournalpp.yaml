@@ -4,17 +4,13 @@ runtime: org.gnome.Platform
 runtime-version: '41'
 sdk: org.gnome.Sdk
 
-# Fall back to 20.08 until TexLive properly builds upstream
-# https://github.com/flathub/org.freedesktop.Sdk.Extension.texlive/issues/43
-# https://github.com/flathub/flathub/issues/2077
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
     directory: extensions
     subdirectories: true
     no-autodownload: true
     autodelete: true
-    version: '20.08'
-
+    version: '21.08'
 
 command: xournalpp
 finish-args:
