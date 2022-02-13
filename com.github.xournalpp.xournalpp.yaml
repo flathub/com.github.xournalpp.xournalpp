@@ -156,14 +156,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 9d1277dee22bb095c2db047bb04f89cc837aee3c
-        tag: 1.1.0
+        commit: 4f113e9478a1908f3d1534f7a5b9763f7834d4d9
+        tag: v1.1.1
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
-      - type: patch
-        path: 0001-Update-appdata-screenshots.patch
-      - type: patch
-        path: 0002-Avoid-deprecated-mimetypes-tag.patch
-      - type: patch
-        path: 0003-ensure-lgi-loads-Gtk-3.patch
