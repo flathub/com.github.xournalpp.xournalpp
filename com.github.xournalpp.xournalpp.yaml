@@ -92,7 +92,7 @@ modules:
           type: anitya
           project-id: 3687
           url-template: https://poppler.freedesktop.org/poppler-data-$version.tar.gz
-                         
+
   - name: libzip
     buildsystem: cmake-ninja
     config-opts:
@@ -156,8 +156,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 4f113e9478a1908f3d1534f7a5b9763f7834d4d9
-        tag: v1.1.1
+        commit: 9d1277dee22bb095c2db047bb04f89cc837aee3c
+        tag: 1.1.0
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
