@@ -160,4 +160,4 @@ modules:
         tag: v1.1.1
         x-checker-data:
           type: git
-          tag-pattern: ^([\d.]+)$
+          tag-pattern: ^v([\d.]+)$
