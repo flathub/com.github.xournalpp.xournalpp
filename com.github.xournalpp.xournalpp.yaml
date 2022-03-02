@@ -73,8 +73,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-22.02.0.tar.xz
-        sha256: e390c8b806f6c9f0e35c8462033e0a738bb2460ebd660bdb8b6dca01556193e1
+        url: https://poppler.freedesktop.org/poppler-22.03.0.tar.xz
+        sha256: 728c78ba94d75a55f6b6355d4fbdaa6f49934d9616be58e5e679a9cfd0980e1e
         x-checker-data:
           type: anitya
           project-id: 3686
@@ -92,7 +92,7 @@ modules:
           type: anitya
           project-id: 3687
           url-template: https://poppler.freedesktop.org/poppler-data-$version.tar.gz
-                         
+
   - name: libzip
     buildsystem: cmake-ninja
     config-opts:
