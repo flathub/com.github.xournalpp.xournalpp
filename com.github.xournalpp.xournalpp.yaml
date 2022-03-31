@@ -16,7 +16,7 @@ command: xournalpp
 finish-args:
   # X11 + XShm access
   - --share=ipc
-  - --socket=x11
+  - --socket=fallback-x11
   # Wayland access
   - --socket=wayland
   # File access (unfortunately, autosaving will not work properly outside of $XDG_DOCUMENTS_DIR)
