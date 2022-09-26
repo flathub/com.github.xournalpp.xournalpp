@@ -10,7 +10,7 @@ add-extensions:
     subdirectories: true
     no-autodownload: true
     autodelete: true
-    version: '21.08'
+    version: '22.08'
 
 command: xournalpp
 finish-args:
