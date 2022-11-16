@@ -24,6 +24,7 @@ finish-args:
   - --filesystem=host
   # Sound
   - --socket=pulseaudio
+  - --filesystem=xdg-run/pipewire-0
   # Allow dconf
   - --filesystem=xdg-run/dconf
   - --filesystem=~/.config/dconf:ro
