@@ -6,7 +6,7 @@ the texlive extension:
 
     flatpak install flathub org.freedesktop.Sdk.Extension.texlive//22.08
     
-Templates are available, although there are a bit hidden:
+Templates are available, although they are a bit hidden:
 
     /var/lib/flatpak/app/com.github.xournalpp.xournalpp/current/active/files/share/xournalpp/resources/default_template.tex
     
