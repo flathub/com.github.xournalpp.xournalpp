@@ -35,8 +35,8 @@ finish-args:
   - --filesystem=xdg-run/gvfs
   - --filesystem=xdg-run/gvfsd
   - --talk-name=org.gtk.vfs.*
-  # Access to the TeX binaries, taken from https://github.com/flathub/org.texstudio.TeXstudio/blob/d4e27005d20889aa738da129ea6b6b0e5c0a0528/org.texstudio.TeXstudio.yaml#L22
-  - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin/
+  # Access to the TeX binaries, tinytex last so the full version takes preference
+  - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin:/app/tinytex/bin/x86_64-linux
 
 cleanup:
   - /include
@@ -158,11 +158,6 @@ modules:
 #          project-id: 13277
 #          url-template: https://github.com/libsndfile/libsndfile/archive/refs/tags/$version.tar.gz
 
-  - name: texlive_extension
-    buildsystem: simple
-    build-commands:
-      - mkdir /app/extensions
-
   - name: xournalpp
     buildsystem: cmake-ninja
     config-opts:
@@ -176,3 +171,23 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
+
+  # Full version that is like 7 GB big
+  - name: texlive_extension
+    buildsystem: simple
+    build-commands:
+      - mkdir /app/extensions
+
+  # Smaller latex package
+  - name: tinetex
+    only-arches:
+      - x86_64
+    buildsystem: simple
+    build-commands:
+      - mkdir /app/tinytex
+      - tar xf TinyTeX-1-v2022.04.04.tar.xz -C /app/tinytex/ --strip-components 1
+    sources:
+      - type: file
+        url: https://www.giuspen.net/software/TinyTeX-1-v2022.04.04.tar.xz
+        sha256: 3025930f9c9e989c0cac59826f8ee126d677aec728d20537b9e53e13ace29020
+
