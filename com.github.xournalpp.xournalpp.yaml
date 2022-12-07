@@ -179,15 +179,24 @@ modules:
       - mkdir /app/extensions
 
   # Smaller latex package
-  - name: tinetex
+  - name: tinytex
     only-arches:
       - x86_64
     buildsystem: simple
     build-commands:
       - mkdir /app/tinytex
-      - tar xf TinyTeX-1-v2022.04.04.tar.xz -C /app/tinytex/ --strip-components 1
+      - tar xf TinyTeX-v2023.10.tar.gz -C /app/tinytex/ --strip-components 1
+
+      - unzip -d /app/tinytex/texmf-dist/tex/latex/ scontents-2.0.zip
+      - cd /app/tinytex/texmf-dist/tex/latex/scontents/
+      - /app/tinytex/bin/*/latex -output-directory=/app/tinytex/texmf-dist/tex/latex/scontents scontents.ins
+      - /app/tinytex/bin/*/mktexlsr
+
     sources:
       - type: file
-        url: https://www.giuspen.net/software/TinyTeX-1-v2022.04.04.tar.xz
-        sha256: 3025930f9c9e989c0cac59826f8ee126d677aec728d20537b9e53e13ace29020
+        url: https://github.com/rstudio/tinytex-releases/releases/download/v2023.10/TinyTeX-v2023.10.tar.gz
+        sha256: ae292b423a66a1412d50a903486a1dba81281bc57070fefed690e4691917fb5b
+      - type: file
+        url: https://github.com/pablgonz/scontents/releases/download/v2.0/scontents-2.0.zip
+        sha256: 7512cf6fbba96aab93c1e099cdb104861b2ac0c4d0c59f9a999e4003ec42a79d
 
