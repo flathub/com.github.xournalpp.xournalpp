@@ -74,8 +74,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-23.01.0.tar.xz
-        sha256: fae9b88d3d5033117d38477b79220cfd0d8e252c278ec870ab1832501741fd94
+        url: https://poppler.freedesktop.org/poppler-23.02.0.tar.xz
+        sha256: 3315dda270fe2b35cf1f41d275948c39652fa863b90de0766f6b293d9a558fc9
         x-checker-data:
           type: anitya
           project-id: 3686
@@ -87,8 +87,8 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-data-0.4.11.tar.gz
-        sha256: 2cec05cd1bb03af98a8b06a1e22f6e6e1a65b1e2f3816cb3069bb0874825f08c
+        url: https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz
+        sha256: c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74
         x-checker-data:
           type: anitya
           project-id: 3687
