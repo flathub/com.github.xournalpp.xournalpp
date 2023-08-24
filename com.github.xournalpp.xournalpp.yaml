@@ -157,8 +157,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 10ed72c9cafed192d9ebd09a4def895a697728f7
-        tag: v1.2.0
+        commit: b48932a2c9a5dbfd2dc65007d8e582bfdf7b25b4
+        tag: v1.2.1
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
