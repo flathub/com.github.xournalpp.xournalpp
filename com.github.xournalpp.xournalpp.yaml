@@ -153,6 +153,8 @@ modules:
 
   - name: xournalpp
     buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     builddir: true
     sources:
       - type: git
