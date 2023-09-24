@@ -4,7 +4,7 @@ LaTeX Support
 If you want to enter LaTeX code and have it rendered, you need to install
 the texlive extension:
 
-    flatpak install flathub org.freedesktop.Sdk.Extension.texlive//22.08
+    flatpak install flathub org.freedesktop.Sdk.Extension.texlive//23.08
     
 Templates are available, although they are a bit hidden:
 
