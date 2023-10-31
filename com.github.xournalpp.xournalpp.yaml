@@ -191,11 +191,10 @@ modules:
       - unzip -d /app/tinytex/texmf-dist/tex/latex/ scontents-2.0.zip
       - cd /app/tinytex/texmf-dist/tex/latex/scontents/
       - /app/tinytex/bin/*/latex -output-directory=/app/tinytex/texmf-dist/tex/latex/scontents scontents.ins
-      - /app/tinytex/bin/*/mktexlsr
 
       - unzip -d /app/tinytex/texmf-dist/ pgfplots_1.17.tds.zip
-      - /app/tinytex/bin/x86_64-linux/texhash
-
+   
+      - /app/tinytex/bin/*/mktexlsr           # so that unzipped packages are found
       - rm -rf /app/tinytex/texmf-dist/doc/   # saving some space
 
     sources:
