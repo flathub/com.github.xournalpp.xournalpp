@@ -30,13 +30,14 @@ finish-args:
   - --filesystem=~/.config/dconf:ro
   - --talk-name=ca.desrt.dconf
   - --env=DCONF_USER_CONFIG_DIR=.config/dconf
+  - --env=TEXMFVAR=$XDG_CACHE_HOME/texmf-var  # The default is not a writable directory
   - --persist=.xournalpp
   # Allow acces to GVfs (network shares)
   - --filesystem=xdg-run/gvfs
   - --filesystem=xdg-run/gvfsd
   - --talk-name=org.gtk.vfs.*
-  # Access to the TeX binaries, taken from https://github.com/flathub/org.texstudio.TeXstudio/blob/d4e27005d20889aa738da129ea6b6b0e5c0a0528/org.texstudio.TeXstudio.yaml#L22
-  - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin/
+  # Access to the TeX binaries, tinytex last so the full version takes preference
+  - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin:/app/tinytex/bin/x86_64-linux
 
 cleanup:
   - /include
@@ -158,11 +159,6 @@ modules:
 #          project-id: 13277
 #          url-template: https://github.com/libsndfile/libsndfile/archive/refs/tags/$version.tar.gz
 
-  - name: texlive_extension
-    buildsystem: simple
-    build-commands:
-      - mkdir /app/extensions
-
   - name: xournalpp
     buildsystem: cmake-ninja
     config-opts:
@@ -176,3 +172,39 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
+
+  # Full version that is like 7 GB big
+  - name: texlive_extension
+    buildsystem: simple
+    build-commands:
+      - mkdir /app/extensions
+
+  # Smaller latex package
+  - name: tinytex
+    only-arches:
+      - x86_64
+    buildsystem: simple
+    build-commands:
+      - mkdir /app/tinytex
+      - tar xf TinyTeX-v2023.10.tar.gz -C /app/tinytex/ --strip-components 1
+
+      - unzip -d /app/tinytex/texmf-dist/tex/latex/ scontents-2.0.zip
+      - cd /app/tinytex/texmf-dist/tex/latex/scontents/
+      - /app/tinytex/bin/*/latex -output-directory=/app/tinytex/texmf-dist/tex/latex/scontents scontents.ins
+
+      - unzip -d /app/tinytex/texmf-dist/ pgfplots_1.17.tds.zip
+   
+      - /app/tinytex/bin/*/mktexlsr           # so that unzipped packages are found
+      - rm -rf /app/tinytex/texmf-dist/doc/   # saving some space
+
+    sources:
+      - type: file
+        url: https://github.com/rstudio/tinytex-releases/releases/download/v2023.10/TinyTeX-v2023.10.tar.gz
+        sha256: ae292b423a66a1412d50a903486a1dba81281bc57070fefed690e4691917fb5b
+      - type: file
+        url: https://github.com/pablgonz/scontents/releases/download/v2.0/scontents-2.0.zip
+        sha256: 7512cf6fbba96aab93c1e099cdb104861b2ac0c4d0c59f9a999e4003ec42a79d
+      - type: file
+        url: https://github.com/pgf-tikz/pgfplots/releases/download/1.17/pgfplots_1.17.tds.zip
+        sha256: 6fdeb9af837a46e9e7aaf012f8cb40277d8d234814dd9da9aff7fc27664fc2cf
+

@@ -1,8 +1,9 @@
 LaTeX Support
 ==============
 
-If you want to enter LaTeX code and have it rendered, you need to install
-the texlive extension:
+If you want to enter LaTeX code and have it rendered, you can either used the built-in minimal
+LaTeX installation (TinyTeX and scontents, pgfplots packages) or install the texlive extension 
+(which takes more than 7 GB of disk space):
 
     flatpak install flathub org.freedesktop.Sdk.Extension.texlive//23.08
     
