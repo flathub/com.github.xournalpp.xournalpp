@@ -167,14 +167,12 @@ modules:
     buildsystem: autotools
     sources:
       - type: archive
-        url: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
-        sha256: 1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9
-# Latest versions of fork give compile errors for Xournalpp
-# https://github.com/xournalpp/xournalpp/issues/3432
-#        x-checker-data:
-#          type: anitya
-#          project-id: 13277
-#          url-template: https://github.com/libsndfile/libsndfile/archive/refs/tags/$version.tar.gz
+        url: https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
+        sha256: 3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e
+        x-checker-data:
+          type: anitya
+          project-id: 13277
+          url-template: https://github.com/libsndfile/libsndfile/releases/download/$version/libsndfile-$version.tar.xz
 
   - name: xournalpp
     buildsystem: cmake-ninja
