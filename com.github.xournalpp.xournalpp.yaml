@@ -74,6 +74,22 @@ modules:
         url: https://github.com/pavouk/lgi.git
         commit: 4071f902b635d3a7078c65162fce347367b1371d
 
+  - name: openjpeg
+    buildsystem: cmake-ninja
+    cleanup:
+      - /bin
+      - /include
+      - /lib/openjpeg-*
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        url: https://www.github.com/uclouvain/openjpeg/archive/v2.5.0.tar.gz
+        sha256: 0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a
+        x-checker-data:
+          type: anitya
+          project-id: 2550
+          url-template: https://www.github.com/uclouvain/openjpeg/archive/v$version.tar.gz
+
   - name: poppler
     buildsystem: cmake-ninja
     config-opts:
@@ -81,8 +97,9 @@ modules:
       - -DCMAKE_INSTALL_INCLUDEDIR=/app/include
       - -DENABLE_QT5=OFF
       - -DENABLE_QT6=OFF
+      - -DENABLE_CPP=OFF
       - -DENABLE_BOOST=OFF
-      - -DENABLE_LIBOPENJPEG=none
+      - -DENABLE_LIBOPENJPEG=openjpeg2
     cleanup:
       - /bin
     sources:
