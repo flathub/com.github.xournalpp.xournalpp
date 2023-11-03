@@ -104,8 +104,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-23.10.0.tar.xz
-        sha256: 31a3dfdea79f4922402d313737415a44d44dc14d6b317f959a77c5bba0647dd9
+        url: https://poppler.freedesktop.org/poppler-23.11.0.tar.xz
+        sha256: f99cca6799cb9cb6c92fc1e0eb78547b611cb733750ab7cb047cb0e6c246539c
         x-checker-data:
           type: anitya
           project-id: 3686
@@ -205,10 +205,11 @@ modules:
 
       - unzip -d /app/tinytex/texmf-dist/tex/latex/ scontents-2.0.zip
       - cd /app/tinytex/texmf-dist/tex/latex/scontents/
-      - /app/tinytex/bin/*/latex -output-directory=/app/tinytex/texmf-dist/tex/latex/scontents scontents.ins
+      - /app/tinytex/bin/*/latex -output-directory=/app/tinytex/texmf-dist/tex/latex/scontents
+        scontents.ins
 
       - unzip -d /app/tinytex/texmf-dist/ pgfplots_1.17.tds.zip
-   
+
       - /app/tinytex/bin/*/mktexlsr           # so that unzipped packages are found
       - rm -rf /app/tinytex/texmf-dist/doc/   # saving some space
 
