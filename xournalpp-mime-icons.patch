@@ -1,0 +1,24 @@
+diff --git a/desktop/com.github.xournalpp.xournalpp.xml b/desktop/com.github.xournalpp.xournalpp.xml
+index 9453aa6..8003123 100644
+--- a/desktop/com.github.xournalpp.xournalpp.xml
++++ b/desktop/com.github.xournalpp.xournalpp.xml
+@@ -4,16 +4,19 @@
+ 		<comment>Xournal note file</comment>
+ 		<comment xml:lang="hu">Xournal jegyzetfájl</comment>
+ 		<glob pattern="*.xoj"/>
++		<icon name="com.github.xournalpp.xournalpp.application-x-xojpp" />
+ 	</mime-type>
+ 	<mime-type type="application/x-xopp">
+ 		<comment>Xournal++ note file</comment>
+ 		<comment xml:lang="hu">Xournal++ jegyzetfájl</comment>
+ 		<glob pattern="*.xopp"/>
++		<icon name="com.github.xournalpp.xournalpp.application-x-xopp" />
+ 	</mime-type>
+ 	<mime-type type="application/x-xopt">
+ 		<comment>Xournal++ note file</comment>
+ 		<comment xml:lang="hu">Xournal++ jegyzetfájl</comment>
+ 		<glob pattern="*.xopt"/>
++		<icon name="com.github.xournalpp.xournalpp.application-x-xopt" />
+ 	</mime-type>
+ </mime-info>
+ 
