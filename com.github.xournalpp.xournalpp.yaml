@@ -208,7 +208,7 @@ modules:
     buildsystem: simple
     build-commands:
       - mkdir /app/tinytex
-      - tar xf TinyTeX-v2023.10.tar.gz -C /app/tinytex/ --strip-components 1
+      - tar xf TinyTeX-v2024.01.tar.gz -C /app/tinytex/ --strip-components 1
 
       - unzip -d /app/tinytex/texmf-dist/tex/latex/ scontents-2.0.zip
       - cd /app/tinytex/texmf-dist/tex/latex/scontents/
@@ -218,15 +218,18 @@ modules:
       - unzip -d /app/tinytex/texmf-dist/ pgfplots_1.17.tds.zip
 
       - /app/tinytex/bin/*/mktexlsr           # so that unzipped packages are found
+      - /app/tinytex/bin/*/tlmgr remove --force --no-depends $(cat pkgs-remove.txt | tr '\n' ' ')  # remove unneeded packages
       - rm -rf /app/tinytex/texmf-dist/doc/   # saving some space
 
     sources:
       - type: file
-        url: https://github.com/rstudio/tinytex-releases/releases/download/v2023.10/TinyTeX-v2023.10.tar.gz
-        sha256: ae292b423a66a1412d50a903486a1dba81281bc57070fefed690e4691917fb5b
+        url: https://github.com/rstudio/tinytex-releases/releases/download/v2024.01/TinyTeX-v2024.01.tar.gz
+        sha256: 5656473061e9d3aafe14e602aef854213be730b24aa8a77eafae12f521c5d9d9
       - type: file
         url: https://github.com/pablgonz/scontents/releases/download/v2.0/scontents-2.0.zip
         sha256: 7512cf6fbba96aab93c1e099cdb104861b2ac0c4d0c59f9a999e4003ec42a79d
       - type: file
         url: https://github.com/pgf-tikz/pgfplots/releases/download/1.17/pgfplots_1.17.tds.zip
         sha256: 6fdeb9af837a46e9e7aaf012f8cb40277d8d234814dd9da9aff7fc27664fc2cf
+      - type: file
+        path: pkgs-remove.txt
