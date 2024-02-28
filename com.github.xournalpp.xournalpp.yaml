@@ -83,8 +83,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://www.github.com/uclouvain/openjpeg/archive/v2.5.1.tar.gz
-        sha256: c0b92dadd65e33b1cf94f39dd9157d5469846744c2e0afb8ca10961f51f61da6
+        url: https://www.github.com/uclouvain/openjpeg/archive/v2.5.2.tar.gz
+        sha256: 90e3896fed910c376aaf79cdd98bdfdaf98c6472efd8e1debf0a854938cbda6a
         x-checker-data:
           type: anitya
           project-id: 2550
