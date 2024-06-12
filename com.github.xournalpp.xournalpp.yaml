@@ -104,8 +104,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-24.06.0.tar.xz
-        sha256: 0cdabd495cada11f6ee9e75c793f80daf46367b66c25a63ee8c26d0f9ec40c76
+        url: https://poppler.freedesktop.org/poppler-24.06.1.tar.xz
+        sha256: 1e629e8732286c745fbc0b15a3ee591443fb37a2210856e7f3ec38a0fb93ab13
         x-checker-data:
           type: anitya
           project-id: 3686
