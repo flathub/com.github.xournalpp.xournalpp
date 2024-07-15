@@ -25,12 +25,10 @@ finish-args:
   # Sound
   - --socket=pulseaudio
   - --filesystem=xdg-run/pipewire-0
-  # Allow dconf
-  - --filesystem=xdg-run/dconf
-  - --filesystem=~/.config/dconf:ro
-  - --talk-name=ca.desrt.dconf
-  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
-  - --env=TEXMFVAR=$XDG_CACHE_HOME/texmf-var  # The default is not a writable directory
+  # Migrate DConf
+  - --metadata=X-DConf=migrate-path=/com/github/xournalpp/xournalpp/
+  # The default is not a writable directory
+  - --env=TEXMFVAR=$XDG_CACHE_HOME/texmf-var
   - --persist=.xournalpp
   # Allow acces to GVfs (network shares)
   - --filesystem=xdg-run/gvfs
