@@ -102,8 +102,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-24.09.0.tar.xz
-        sha256: ebd857987e2395608c69fdc44009692d5906f13b612c5280beff65a0b75dc255
+        url: https://poppler.freedesktop.org/poppler-24.10.0.tar.xz
+        sha256: 58ed1849810f04a10b37c7ff6f3e411845c8a57d731d599d0045acc7a7fff09d
         x-checker-data:
           type: anitya
           project-id: 3686
@@ -184,8 +184,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: c6970f47c5204c0a81d45d3cf5d30f8b7ae8e3a6
-        tag: v1.2.3
+        commit: 2a4ed3fde72eb4ee66ece77ad1d46f49f26f250f
+        tag: v1.2.4
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
