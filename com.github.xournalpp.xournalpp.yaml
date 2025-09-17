@@ -11,7 +11,7 @@ add-extensions:
     subdirectories: true
     no-autodownload: true
     autodelete: true
-    version: '25.08'
+    version: '24.08'
 
 command: xournalpp
 finish-args:
@@ -163,7 +163,9 @@ modules:
       - /share/pkgconfig
 
   - name: libsndfile
-    buildsystem: autotools
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     sources:
       - type: archive
         url: https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
