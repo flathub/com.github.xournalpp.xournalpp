@@ -2,7 +2,7 @@ app-id: com.github.xournalpp.xournalpp
 # The (bigger) Gnome Platform is just a workaround for an issue with custom cursors, 
 # see https://github.com/xournalpp/xournalpp/issues/2375#issuecomment-781482931
 runtime: org.gnome.Platform
-runtime-version: '48'
+runtime-version: '49'
 sdk: org.gnome.Sdk
 
 add-extensions:
@@ -11,7 +11,7 @@ add-extensions:
     subdirectories: true
     no-autodownload: true
     autodelete: true
-    version: '24.08'
+    version: '25.08'
 
 command: xournalpp
 finish-args:
