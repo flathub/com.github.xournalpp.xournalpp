@@ -2,7 +2,7 @@ app-id: com.github.xournalpp.xournalpp
 # The (bigger) Gnome Platform is just a workaround for an issue with custom cursors, 
 # see https://github.com/xournalpp/xournalpp/issues/2375#issuecomment-781482931
 runtime: org.gnome.Platform
-runtime-version: '48'
+runtime-version: '49'
 sdk: org.gnome.Sdk
 
 add-extensions:
@@ -163,7 +163,9 @@ modules:
       - /share/pkgconfig
 
   - name: libsndfile
-    buildsystem: autotools
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     sources:
       - type: archive
         url: https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
