@@ -14,6 +14,11 @@ add-extensions:
     version: '24.08'
 
 command: xournalpp
+rename-mime-icons:
+  - application-x-xopp
+  - application-x-xopt
+  - application-x-xojpp
+
 finish-args:
   # X11 + XShm access
   - --share=ipc
@@ -180,10 +185,6 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     builddir: true
-    post-install:
-      - cp $FLATPAK_DEST/share/icons/hicolor/scalable/mimetypes/{,$FLATPAK_ID.}application-x-xopp.svg
-      - cp $FLATPAK_DEST/share/icons/hicolor/scalable/mimetypes/{,$FLATPAK_ID.}application-x-xopt.svg
-      - cp $FLATPAK_DEST/share/icons/hicolor/scalable/mimetypes/{,$FLATPAK_ID.}application-x-xojpp.svg
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
@@ -192,9 +193,6 @@ modules:
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-      - type: patch
-        # Until we get flatpak-builder 1.4 (or 1.3.5)
-        path: xournalpp-mime-icons.patch
 
   # Full version that is like 7 GB big
   - name: texlive_extension
