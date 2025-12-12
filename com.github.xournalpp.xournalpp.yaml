@@ -13,7 +13,7 @@ add-extensions:
     autodelete: true
     version: '24.08'
 
-command: xournalpp
+command: xournalpp-wrapper
 rename-mime-icons:
   - application-x-xopp
   - application-x-xopt
@@ -42,6 +42,9 @@ finish-args:
   - --talk-name=org.gtk.vfs.*
   # Access to the TeX binaries, tinytex last so the full version takes preference
   - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin:/app/tinytex/bin/x86_64-linux
+  # Set LUA_PATH and LUA_CPATH manually in view of issue https://github.com/flathub/shared-modules/issues/434
+  - --env=LUA_PATH=/app/share/lua/5.4/?.lua;/app/share/lua/5.4/?/init.lua;/app/lib/lua/5.4/?.lua;/app/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua
+  - --env=LUA_CPATH=/app/lib/lua/5.4/?.so;/app/lib/lua/5.4/loadall.so;./?.so
 
 cleanup:
   - /include
@@ -54,7 +57,7 @@ cleanup:
   - '*.la'
   - '*.a'
 modules:
-  - shared-modules/lua5.3/lua-5.3.5.json
+  - shared-modules/lua5.4/lua-5.4.json
 
   - name: sourceview4
     buildsystem: meson
@@ -66,17 +69,18 @@ modules:
         url: https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.4.tar.xz
         sha256: 7ec9d18fb283d1f84a3a3eff3b7a72b09a10c9c006597b3fbabbb5958420a87d
 
-  - name: lua-lgi
-    buildsystem: simple
-    no-autogen: true
-    no-make-install: true
-    build-commands:
-      - make PREFIX="" LUA_VERSION="5.3"
-      - make install PREFIX="" LUA_VERSION="5.3" DESTDIR=$FLATPAK_DEST
+  - name: LuaGObject
+    buildsystem: meson
+    config-opts:
+      - --prefix=/app
     sources:
       - type: git
-        url: https://github.com/pavouk/lgi.git
-        commit: 4071f902b635d3a7078c65162fce347367b1371d
+        url: https://github.com/vtrlx/LuaGObject
+        commit: 8780690adccf6d78343ade7aac025c9d656913a2
+        tag: 0.10.2
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
 
   - name: openjpeg
     buildsystem: cmake-ninja
@@ -171,6 +175,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+      - -DBUILD_SHARED_LIBS=ON
     sources:
       - type: archive
         url: https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
@@ -180,16 +185,39 @@ modules:
           project-id: 13277
           url-template: https://github.com/libsndfile/libsndfile/releases/download/$version/libsndfile-$version.tar.xz
 
+  - name: qpdf
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    sources:
+      - type: git
+        url: https://github.com/qpdf/qpdf
+        tag: v12.2.0
+        commit: 856d32c610334855d30e96d25eb5f9636fb62f08
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
   - name: xournalpp
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DFETCHCONTENT_SOURCE_DIR_CPPTRACE=/run/build/xournalpp/cpptrace-src
     builddir: true
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 0569f03547b87931efb876a984bb3c47a6411c6c
-        tag: v1.2.10
+        commit: 9b9778d9ac5a5877d0689b07b7412a300f09edb3
+        tag: v1.3.0
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+      - type: git
+        url: https://github.com/jeremy-rifkin/cpptrace.git
+        commit: 3db8da80111171c219ab5839905771386bee06b3
+        tag: v1.0.4
+        dest: cpptrace-src
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
