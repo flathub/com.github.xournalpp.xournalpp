@@ -205,6 +205,8 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DFETCHCONTENT_SOURCE_DIR_CPPTRACE=/run/build/xournalpp/cpptrace-src
     builddir: true
+    post-install: 
+      - ./cmake/postinst configure
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
