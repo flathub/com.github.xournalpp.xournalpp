@@ -76,8 +76,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vtrlx/LuaGObject
-        commit: 8780690adccf6d78343ade7aac025c9d656913a2
-        tag: 0.10.2
+        commit: 70d6af87561ce63326f0ecdb7b2b2b8a335779f8
+        tag: 0.10.3
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
