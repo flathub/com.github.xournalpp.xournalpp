@@ -193,8 +193,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/qpdf/qpdf
-        tag: v12.3.0
-        commit: e1af26a3a76336113e3fc9061df32d7a58eb7469
+        tag: v12.3.1
+        commit: c6e327dfbebab46f4a736785f4ca14d9b222eed1
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
