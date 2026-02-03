@@ -76,8 +76,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vtrlx/LuaGObject
-        commit: 70d6af87561ce63326f0ecdb7b2b2b8a335779f8
-        tag: 0.10.3
+        commit: bcc654292b8aa36a8ef4f9b943f5d0b373c4eca2
+        tag: 0.10.4
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
@@ -193,8 +193,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/qpdf/qpdf
-        tag: v12.3.0
-        commit: e1af26a3a76336113e3fc9061df32d7a58eb7469
+        tag: v12.3.2
+        commit: a898bb3a7289d1d05789d6d3f0d5dd534943a8da
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -210,8 +210,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 8da51fd413e5a89f11312286b0535f4c32a68988
-        tag: v1.3.1
+        commit: 89f9b3e56643b911df8645cc35935c747c7688a6
+        tag: v1.3.2
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
