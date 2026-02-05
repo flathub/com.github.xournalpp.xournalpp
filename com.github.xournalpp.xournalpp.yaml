@@ -76,8 +76,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vtrlx/LuaGObject
-        commit: bcc654292b8aa36a8ef4f9b943f5d0b373c4eca2
-        tag: 0.10.4
+        commit: 63c8099190c8830e9ba40dba1e48d7b000c7714e
+        tag: 0.10.5
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+)$
@@ -112,8 +112,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-26.01.0.tar.xz
-        sha256: 1cb944a4b88847f5fb6551683bc799db59f04990f5d8be07aba2acbf38601089
+        url: https://poppler.freedesktop.org/poppler-26.02.0.tar.xz
+        sha256: dded8621f7b2f695c91063aab1558691c8418374cd583501e89ed39487e7ab77
         x-checker-data:
           type: anitya
           project-id: 3686
