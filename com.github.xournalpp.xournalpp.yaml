@@ -155,20 +155,6 @@ modules:
       - /share/man
       - /share/pkgconfig
 
-  - name: libsndfile
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-      - -DBUILD_SHARED_LIBS=ON
-    sources:
-      - type: archive
-        url: https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz
-        sha256: 3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e
-        x-checker-data:
-          type: anitya
-          project-id: 13277
-          url-template: https://github.com/libsndfile/libsndfile/releases/download/$version/libsndfile-$version.tar.xz
-
   - name: qpdf
     buildsystem: cmake-ninja
     builddir: true
