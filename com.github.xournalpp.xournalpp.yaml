@@ -11,7 +11,7 @@ add-extensions:
     subdirectories: true
     no-autodownload: true
     autodelete: true
-    version: '24.08'
+    version: '25.08'
 
 command: xournalpp-wrapper
 rename-mime-icons:
