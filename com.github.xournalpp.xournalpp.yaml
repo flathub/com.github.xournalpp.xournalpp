@@ -42,9 +42,6 @@ finish-args:
   - --talk-name=org.gtk.vfs.*
   # Access to the TeX binaries, tinytex last so the full version takes preference
   - --env=PATH=/app/bin:/app/extensions/bin:/app/extensions/bin/x86_64-linux:/app/extensions/bin/aarch64-linux:/usr/bin:/app/tinytex/bin/x86_64-linux
-  # Set LUA_PATH and LUA_CPATH manually in view of issue https://github.com/flathub/shared-modules/issues/434
-  - --env=LUA_PATH=/app/share/lua/5.4/?.lua;/app/share/lua/5.4/?/init.lua;/app/lib/lua/5.4/?.lua;/app/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua
-  - --env=LUA_CPATH=/app/lib/lua/5.4/?.so;/app/lib/lua/5.4/loadall.so;./?.so
 
 cleanup:
   - /include
