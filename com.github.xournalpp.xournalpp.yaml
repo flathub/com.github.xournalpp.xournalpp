@@ -160,8 +160,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/qpdf/qpdf
-        tag: v12.3.2
-        commit: a898bb3a7289d1d05789d6d3f0d5dd534943a8da
+        tag: v12.4.1
+        commit: c37f83ae468abb6cc741f43b2f6fdeb66e550ffb
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -177,8 +177,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/xournalpp/xournalpp
-        commit: 0537e885d8b1ae4026bf27602a1d6dadefbea614
-        tag: v1.3.6
+        commit: 104f89826a9b1e2d0c098cea58639d6686f78526
+        tag: v1.3.7
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
