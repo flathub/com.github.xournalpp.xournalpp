@@ -160,8 +160,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/qpdf/qpdf
-        tag: v12.4.1
-        commit: c37f83ae468abb6cc741f43b2f6fdeb66e550ffb
+        tag: v12.4.2
+        commit: 4eba95899886e851cc41d76886483b347612f2a8
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
